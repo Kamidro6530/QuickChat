@@ -13,9 +13,12 @@ import com.example.quickchat.navigation.Navigation
 import com.example.quickchat.navigation.top_navigation.TopNavigationItem
 import com.example.quickchat.screens.MainScreen
 import com.example.quickchat.ui.theme.QuickChatTheme
+import com.example.quickchat.ui.theme.antique_white
+import com.example.quickchat.ui.theme.ghost_white
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
-
+import dagger.hilt.android.AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 
@@ -24,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             QuickChatTheme {
-                Surface (color = MaterialTheme.colors.background,contentColor = MaterialTheme.colors.primary ) {
+                Surface (color = ghost_white,contentColor = ghost_white ) {
                     val navController = rememberNavController()
                     Navigation(navController = navController)
                 }

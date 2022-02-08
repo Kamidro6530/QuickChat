@@ -11,6 +11,7 @@ import com.example.quickchat.navigation.top_navigation.TabsContent
 import com.example.quickchat.navigation.top_navigation.TopBar
 import com.example.quickchat.navigation.top_navigation.TopNavigationItem
 import com.example.quickchat.ui.theme.QuickChatTheme
+import com.example.quickchat.ui.theme.ghost_white
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
@@ -27,11 +28,11 @@ fun MainScreen(navController: NavController) {
         val scope = rememberCoroutineScope()
 
         Scaffold(
-            backgroundColor = colors.secondaryVariant
+            backgroundColor = ghost_white
         ) {
             Column() {
                 Tabs(tabs = tabs, pagerState = pagerState)
-                TabsContent(tabs = tabs, pagerState = pagerState)
+                TabsContent(tabs = tabs, pagerState = pagerState,navController)
             }
 
         }

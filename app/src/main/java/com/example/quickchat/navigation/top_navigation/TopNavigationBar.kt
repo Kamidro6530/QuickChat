@@ -5,9 +5,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.quickchat.screens.Account
 import com.example.quickchat.screens.Chats
-import com.example.quickchat.screens.QuickChat
+import com.example.quickchat.screens.QuickChatThemesScreen
+import com.example.quickchat.screens.WelcomeScreen
+import com.example.quickchat.screens.chat.ChatScreen
+import com.example.quickchat.screens.quickchat.UsernameQuickChatScreen
+import com.example.quickchat.ui.theme.QuickChatTheme
+import com.example.quickchat.ui.theme.medium_purple
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -19,31 +25,32 @@ import kotlinx.coroutines.launch
 @Composable
 fun TopBar() {
     TopAppBar(
-        title = { Text(text ="QuickChat", fontSize = 18.sp) },
-        backgroundColor =MaterialTheme.colors.primary,
+        title = { Text(text = "QuickChat", fontSize = 18.sp) },
+        backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.background
     )
 }
 
 @ExperimentalPagerApi
 @Composable
-fun Tabs(tabs : List<TopNavigationItem>,pagerState: PagerState) {
+fun Tabs(tabs: List<TopNavigationItem>, pagerState: PagerState) {
 
     val scope = rememberCoroutineScope()
 
     TabRow(selectedTabIndex = pagerState.currentPage,
-        backgroundColor = MaterialTheme.colors.primary,
+        backgroundColor = medium_purple,
         contentColor = MaterialTheme.colors.background,
-        indicator = {position ->
+        indicator = { position ->
             TabRowDefaults.Indicator(
-                Modifier.pagerTabIndicatorOffset(pagerState,position)
+                Modifier.pagerTabIndicatorOffset(pagerState, position)
             )
-        }){
-        tabs.forEachIndexed { index,topNavigationItem ->
-            Tab(text = {Text(topNavigationItem.name)},
+        }) {
+        tabs.forEachIndexed { index, topNavigationItem ->
+            Tab(text = { Text(topNavigationItem.name) },
                 selected = pagerState.currentPage == index,
-                onClick = { scope.launch { pagerState.animateScrollToPage(index) }
-                   })
+                onClick = {
+                    scope.launch { pagerState.animateScrollToPage(index) }
+                })
 
 
         }
@@ -53,12 +60,18 @@ fun Tabs(tabs : List<TopNavigationItem>,pagerState: PagerState) {
 
 @ExperimentalPagerApi
 @Composable
-fun TabsContent(tabs: List<TopNavigationItem>, pagerState: PagerState) {
+fun TabsContent(tabs: List<TopNavigationItem>, pagerState: PagerState,navController: NavController) {
     HorizontalPager(count = tabs.size, state = pagerState) { page ->
         when (page) {
-            0 -> {QuickChat()}
-            1 -> {Chats()}
-            2 -> {Account()}
+            0 -> {
+             QuickChatThemesScreen(navController = navController)
+            }
+            1 -> {
+                Chats()
+            }
+            2 -> {
+                Account()
+            }
         }
 
     }

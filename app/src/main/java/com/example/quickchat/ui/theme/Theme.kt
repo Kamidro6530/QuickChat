@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 private val LightColorPallete = lightColors(
     background = ghost_white,
     primary = medium_purple,
-    primaryVariant = Maximum_blue_purple,
+    primaryVariant = maximum_blue_purple,
     secondary = unbleached_silk,
     secondaryVariant = antique_white,
 
@@ -17,7 +17,7 @@ private val LightColorPallete = lightColors(
 private val DarkColorPallete = lightColors(
     background = ghost_white,
     primary = medium_purple,
-    primaryVariant = Maximum_blue_purple,
+    primaryVariant = maximum_blue_purple,
     secondary = unbleached_silk,
     secondaryVariant = antique_white,
 

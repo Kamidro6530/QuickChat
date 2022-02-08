@@ -2,9 +2,8 @@ package com.example.quickchat.navigation.top_navigation
 
 import androidx.compose.runtime.Composable
 import com.example.quickchat.screens.Chats
-import com.example.quickchat.screens.QuickChat
 
-//Alias is alternative name to identification objects
+
 
 
 
